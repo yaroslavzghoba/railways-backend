@@ -1,7 +1,5 @@
 package com.yaroslavzghoba
 
-import com.yaroslavzghoba.data.BookStorageImpl
-import com.yaroslavzghoba.data.SupplierStorageImpl
 import com.yaroslavzghoba.plugins.configureDatabase
 import com.yaroslavzghoba.plugins.configureRouting
 import com.yaroslavzghoba.plugins.configureSerialization
@@ -19,13 +17,8 @@ fun Application.module() {
         user = environment.config.property("database.user").getString(),
         password = environment.config.property("database.password").getString(),
     )
-    val bookStorage = BookStorageImpl()
-    val supplierStorage = SupplierStorageImpl()
 
     configureDatabase(dbConnectionConfig = dbConnectionConfig)
     configureSerialization()
-    configureRouting(
-        bookStorage = bookStorage,
-        supplierStorage = supplierStorage,
-    )
+    configureRouting()
 }
