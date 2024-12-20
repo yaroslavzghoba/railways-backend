@@ -1,30 +1,33 @@
 package com.yaroslavzghoba.plugins
 
-import io.ktor.server.application.Application
-import io.ktor.server.routing.get
-import io.ktor.server.routing.routing
+import com.yaroslavzghoba.model.Repository
+import com.yaroslavzghoba.routing.*
+import io.ktor.server.application.*
+import io.ktor.server.routing.*
 
-fun Application.configureRouting() {
+fun Application.configureRouting(
+    repository: Repository
+) {
     routing {
         get(
             path = "/station_by_name/{station_name}",
-            body = { TODO("Not implemented yet") },
+            body = { RouteHandlersProvider.getStationsByName(repository) },
         )
         get(
             path = "/stops_at_station/{station_id}",
-            body = { TODO("Not implemented yet") },
+            body = { RouteHandlersProvider.getStopsAtStation(repository) },
         )
         get(
             path = "/route_by_stop/{train_stop_id}",
-            body = { TODO("Not implemented yet") },
+            body = { RouteHandlersProvider.getRouteByStop(repository) },
         )
         get(
             path = "/all_train_numbers",
-            body = { TODO("Not implemented yet") },
+            body = { RouteHandlersProvider.getAllTrainNumbers(repository) },
         )
         get(
             path = "/all_route_events/{route_id}",
-            body = { TODO("Not implemented yet") },
+            body = { RouteHandlersProvider.getAllRouteEvents(repository) },
         )
     }
 }
