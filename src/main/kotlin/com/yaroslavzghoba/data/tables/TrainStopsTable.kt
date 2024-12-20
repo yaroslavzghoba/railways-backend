@@ -11,6 +11,6 @@ object TrainStopsTable : LongIdTable(name = "train_stops", columnName = "id") {
     val actualDepartureTime = timestamp(name = "actual_departure_time")
     val routeId = reference(name = "route_id", foreign = RoutesTable)
     val stationId = reference(name = "station_id", foreign = StationsTable)
-    val expectedStationPlatform = integer(name = "expected_station_platform")
-    val actualStationPlatform = integer(name = "actual_station_platform")
+    val expectedStationPlatform = short(name = "expected_station_platform")
+    val actualStationPlatform = short(name = "actual_station_platform")
 }

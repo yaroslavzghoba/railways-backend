@@ -6,6 +6,6 @@ ktor:
         port: 8080
 
 database:
-    url: "jdbc:postgresql://localhost:5432/bookstore"
+    url: "jdbc:postgresql://localhost:5432/railways"
     user: "postgres"
-    password: $BOOKSTORE_DATABASE_PASSWORD
+    password: $RAILWAYS_DATABASE_PASSWORD
