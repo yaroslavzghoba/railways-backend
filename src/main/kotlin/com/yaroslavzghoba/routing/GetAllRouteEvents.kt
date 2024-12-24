@@ -6,16 +6,16 @@ import io.ktor.server.response.*
 import io.ktor.server.routing.*
 
 @Suppress("UnusedReceiverParameter")
-fun RouteHandlersProvider.getAllRouteEvents(
+fun RouteHandlersProvider.getAllEventsByRoute(
     repository: Repository,
-): suspend RoutingContext.() -> Unit = getAllRouteEventsHandler@{
+): suspend RoutingContext.() -> Unit = getAllEventsByRouteHandler@{
 
     // Return 400 if the `route_id` parameter is not passed or is invalid
     val routeId = call.parameters["route_id"]?.toLong()
     if (routeId == null) {
         val message = mapOf("message" to "The \"route_id\" parameter is not passed or is invalid")
         call.respond(status = HttpStatusCode.BadRequest, message = message)
-        return@getAllRouteEventsHandler
+        return@getAllEventsByRouteHandler
     }
 
     // Get all events on the route
